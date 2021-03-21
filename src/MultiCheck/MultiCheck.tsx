@@ -1,7 +1,6 @@
 import './MultiCheck.css';
 
 import React, {ChangeEvent, useEffect, useState} from 'react';
-import construct = Reflect.construct;
 
 export type Option = {
   label: string,
@@ -23,18 +22,24 @@ export type Option = {
 type Props = {
   label?: string,
   options: Option[],
-  columns: number,
-  values: string[]
+  columns?: number,
+  values?: string[]
   onChange?: (options: Option[]) => void,
 }
 
+const defaultProps: Props = {
+  options: [],
+  values: [],
+  columns: 1
+}
+
 const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
-  const {options, values} = props
-  const [checkboxStatusList, setCheckboxList] = useState(options.map(option => values.includes(option.value)))
+  props = {...defaultProps, ...props}
+  let {options, values} = props
+  const [checkboxStatusList, setCheckboxList] = useState(options.map(option => values ? values.includes(option.value) : false))
   const allChecked = Array(options.length).fill(true)//its a cache, makes toggleAll() faster
   const unChecked = Array(options.length).fill(false)
-  const columnSize = Math.ceil((options.length + 1) / props.columns)
-  console.log((options.length + 1), columnSize)
+  const columnSize = props.columns ? Math.ceil((options.length + 1) / props.columns) : options.length
 
   useEffect(() => {
     callOnChange()
@@ -98,5 +103,7 @@ const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
     </div>
   )
 }
+
+MultiCheck.defaultProps = defaultProps
 
 export default MultiCheck;

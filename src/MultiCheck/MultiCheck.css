@@ -1,6 +1,11 @@
 /*
 .CheckItem's parent container is set to a up to down writing direction
 so use a <br> for creating a new column
+1,2,3,<br>,4
+will look like
+1 4
+2
+3
 */
 
 .CheckList {

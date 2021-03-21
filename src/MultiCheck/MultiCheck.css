@@ -1,3 +1,18 @@
-.MultiCheck {
+/*
+.CheckItem's parent container is set to a up to down writing direction
+so use a <br> for creating a new column
+*/
+
+.CheckList {
+    writing-mode: vertical-lr;
+    -webkit-writing-mode: vertical-lr;
+}
+
+.CheckItem {
+    margin: 2px;
     writing-mode: horizontal-tb;
+    -webkit-writing-mode: horizontal-tb;
+    display: inline-block;
+    width: 200px;
+    overflow: hidden;
 }

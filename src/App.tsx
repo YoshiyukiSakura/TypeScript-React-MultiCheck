@@ -3,10 +3,10 @@ import MultiCheck, {Option} from './MultiCheck/MultiCheck';
 
 const options: Option[] = [
   {label: 'get up', value: '111',},
-  {label: 'eat', value: '222',},
-  {label: 'work', value: '333',},
-  {label: 'eat', value: '222',},
-  {label: 'work', value: '333',},
+  {label: 'break-first', value: '222',},
+  {label: 'go to work', value: '333',},
+  {label: 'lunch', value: '222',},
+  {label: 'go to work', value: '333',},
   {label: 'have fun', value: '444',},
   {label: 'sleep', value: '555',},
   {label: 'dream', value: '666',},
@@ -30,7 +30,7 @@ const App: React.FunctionComponent = (): JSX.Element => {
 
   return <div>
     <h1>Multi Check Component</h1>
-    <MultiCheck label='my-multi-check' options={options}
+    <MultiCheck label='my-today-plan' options={options}
                 onChange={onSelectedOptionsChange}
                 values={selectedValues}
                 columns={2}/>

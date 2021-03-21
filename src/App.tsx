@@ -2,24 +2,27 @@ import React, {useState} from 'react';
 import MultiCheck, {Option} from './MultiCheck/MultiCheck';
 
 const options: Option[] = [
-  {label: 'aaa', value: '111',},
-  {label: 'bbb', value: '222',},
-  {label: 'ccc', value: '333',},
-  {label: 'ddd', value: '444',},
-  {label: 'eee', value: '555',},
-  {label: 'fff', value: '666',},
-  {label: 'ggg', value: '777',},
-  {label: 'hhh', value: '888',},
-  {label: 'iii', value: '999',},
+  {label: 'get up', value: '111',},
+  {label: 'eat', value: '222',},
+  {label: 'work', value: '333',},
+  {label: 'eat', value: '222',},
+  {label: 'work', value: '333',},
+  {label: 'have fun', value: '444',},
+  {label: 'sleep', value: '555',},
+  {label: 'dream', value: '666',},
 ]
 
 const defaultValues: string[] = [
-  '333',
-  '555'
+  '111',
+  '222',
+  // '333',
+  '444',
+  '555',
+  '666',
 ]
 
 const App: React.FunctionComponent = (): JSX.Element => {
-  const [selectedValues, setSelectedValues] = useState<string[]>(defaultValues);
+  const [selectedValues, setSelectedValues] = useState<string[]>(defaultValues)
 
   function onSelectedOptionsChange(options: Option[]): void {
     setSelectedValues(options.map(it => it.value))

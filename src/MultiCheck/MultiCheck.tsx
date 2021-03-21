@@ -1,6 +1,6 @@
 import './MultiCheck.css';
 
-import React from 'react';
+import React, {useState} from 'react';
 
 export type Option = {
   label: string,
@@ -23,13 +23,25 @@ type Props = {
   label?: string,
   options: Option[],
   columns?: number,
-  values?: string[]
+  values: string[]
   onChange?: (options: Option[]) => void,
 }
 
 const MultiCheck: React.FunctionComponent<Props> = (props): JSX.Element => {
+  const {options, values} = props
   return <div className='MultiCheck'>
-    {/* TODO */}
+    <span>
+      <input type="checkbox" defaultChecked={options.every(option => values.includes(option.value))}/>
+      <label>Select All</label>
+    </span>
+    {
+      options.map((option, offset) => {
+        return <span key={offset}>
+                <input type="checkbox" defaultChecked={values.includes(option.value)}/>
+                <label>{option.label}</label>
+              </span>
+      })
+    }
   </div>
 }
 

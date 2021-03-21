@@ -2,5 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import App from './App';
-
-ReactDOM.render(<App/>, document.body);
+const reactApp = document.createElement("div");
+document.body.appendChild(reactApp);
+ReactDOM.render(<App/>, reactApp);
